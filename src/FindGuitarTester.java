@@ -19,6 +19,7 @@ public class FindGuitarTester {
         GuitarSpec spec = guitar.getSpec();
         System.out.println("  We have a " +
           spec.getBuilder() + " " + spec.getModel() + " " +
+            spec.getNumStrings() + "-string" + " " +
           spec.getType() + " guitar:\n     " +
           spec.getBackWood() + " back and sides,\n     " +
           spec.getTopWood() + " top.\n  You can have it for only $" +
