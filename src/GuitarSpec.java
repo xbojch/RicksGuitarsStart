@@ -5,10 +5,10 @@ public class GuitarSpec {
   private Type type;
   private Wood backWood;
   private Wood topWood;
-  private Integer numStrings;
+  private int numStrings;
 
   public GuitarSpec(Builder builder, String model, Type type,
-                    Wood backWood, Wood topWood, Integer numStrings) {
+                    Wood backWood, Wood topWood, int numStrings) {
     this.builder = builder;
     this.model = model;
     this.type = type;
@@ -37,13 +37,13 @@ public class GuitarSpec {
     return topWood;
   }
 
-  public Integer getNumStrings() { return numStrings; }
+  public int getNumStrings() { return numStrings; }
 
-  public Boolean equals(GuitarSpec spec) {
+  public boolean matches(GuitarSpec spec) {
     if (this.getBuilder() != spec.getBuilder()) {
       return false;
     }
-    if (this.getModel() != spec.getModel()) {
+    if ((this.getModel() != null) && (this.getModel() != "") && (this.getModel() != spec.getModel())) {
       return false;
     }
     if (this.getType() != spec.getType()) {
