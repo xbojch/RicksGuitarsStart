@@ -3,37 +3,37 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Inventory {
-  private List guitars;
+    private List inventory;
 
-  public Inventory() {
-    guitars = new LinkedList();
-  }
-
-  public void addGuitar(String serialNumber, double price,
-                        GuitarSpec spec) {
-    Guitar guitar = new Guitar(serialNumber, price, spec);
-    guitars.add(guitar);
-  }
-
-  public Guitar getGuitar(String serialNumber) {
-    for (Iterator i = guitars.iterator(); i.hasNext(); ) {
-      Guitar guitar = (Guitar)i.next();
-      if (guitar.getSerialNumber().equals(serialNumber)) {
-        return guitar;
-      }
+    public Inventory() {
+        inventory = new LinkedList();
     }
-    return null;
-  }
 
-  public List search(GuitarSpec searchSpec) {
-    List matchingGuitars = new LinkedList();
-    for (Iterator i = guitars.iterator(); i.hasNext(); ) {
-      Guitar guitar = (Guitar)i.next();
-      GuitarSpec guitarSpec = guitar.getSpec();
-      if (searchSpec.matches(guitarSpec)) {
-        matchingGuitars.add(guitar);
-      }
+    public void addInstrument(String serialNumber, double price,
+                              InstrumentSpec spec) {
+        Instrument instrument = new Instrument(serialNumber, price, spec);
+        inventory.add(instrument);
     }
-    return matchingGuitars;
-  }
+
+    public Instrument get(String serialNumber) {
+        for (Iterator i = inventory.iterator(); i.hasNext(); ) {
+            Instrument instrument = (Instrument) i.next();
+            if (instrument.getSerialNumber().equals(serialNumber)) {
+                return instrument;
+            }
+        }
+        return null;
+    }
+
+    public List search(InstrumentSpec searchSpec) {
+        List matchingInstruments = new LinkedList();
+        for (Iterator i = inventory.iterator(); i.hasNext(); ) {
+            Instrument instrument = (Instrument) i.next();
+            if (instrument.getSpec().matches(searchSpec)) {
+                matchingInstruments.add(instrument);
+            }
+        }
+        return matchingInstruments;
+    }
+
 }
